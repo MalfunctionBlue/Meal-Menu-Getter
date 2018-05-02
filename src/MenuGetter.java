@@ -20,6 +20,7 @@ public class MenuGetter {
         //"[class=menusamprecipes]" is the tag for food
         Elements foods = doc.select("[class=menusamprecipes]");
         //System.out.println(foods);
+
         for (Element food : foods) {
             System.out.println(food.text());
         }
