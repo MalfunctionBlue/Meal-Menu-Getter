@@ -22,7 +22,10 @@ public class MenuGetter {
     }
 
     public String toString() {
-        return menuString.text();
+        String s = "";
+        for (Element e : menuString)
+            s += e.text() + "\n";
+        return s;
     }
 
 

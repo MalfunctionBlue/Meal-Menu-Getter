@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -5,56 +6,40 @@ import javax.mail.internet.MimeMessage;
 import javax.activation.*;
 
 public class JMailSender {
-    private static String USER_NAME = "";  // GMail user name (just the part before "@gmail.com")
-    private static String PASSWORD = ""; // GMail password
-    private static String RECIPIENT = "dyu25@ucsc.edu";
+    public static void sent(String account,String pw,String[] addressList) throws IOException {
 
-    public static void main(String[] args) {
-        String from = USER_NAME;
-        String pass = PASSWORD;
-        String[] to = { RECIPIENT }; // list of recipient email addresses
-        String subject = "Java send mail example";
-        String body = "Welcome to JavaMail!";
+        final String username = account;
+        final String password = pw;
 
-        sendFromGMail(from, pass, to, subject, body);
-    }
-
-    private static void sendFromGMail(String from, String pass, String[] to, String subject, String body) {
-        Properties props = System.getProperties();
-        String host = "smtp.gmail.com";
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", host);
-        props.put("mail.smtp.user", from);
-        props.put("mail.smtp.password", pass);
-        props.put("mail.smtp.port", "587");
+        Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "outlook.office365.com");
+        props.put("mail.smtp.port", "587");
 
-        Session session = Session.getDefaultInstance(props);
-        MimeMessage message = new MimeMessage(session);
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+                    }
+                });
 
         try {
-            message.setFrom(new InternetAddress(from));
-            InternetAddress[] toAddress = new InternetAddress[to.length];
 
-            // To get the array of addresses
-            for( int i = 0; i < to.length; i++ ) {
-                toAddress[i] = new InternetAddress(to[i]);
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(account));
+            message.setSubject("Today's Dining Hall is Serving...");
+            message.setText(new MenuGetter().toString());
+
+            for(String s:addressList) {
+                message.setRecipients(Message.RecipientType.TO,
+                        InternetAddress.parse(s));
+                Transport.send(message);
             }
+            System.out.println("Done");
 
-            for( int i = 0; i < toAddress.length; i++) {
-                message.addRecipient(Message.RecipientType.TO, toAddress[i]);
-            }
-
-            message.setSubject(subject);
-            message.setText(body);
-            Transport transport = session.getTransport("smtp");
-            transport.connect(host, from, pass);
-            transport.sendMessage(message, message.getAllRecipients());
-            transport.close();
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
         }
-        catch (Exception ae) {
-            ae.printStackTrace();
-        }
-
     }
 }
