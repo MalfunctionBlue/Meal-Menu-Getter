@@ -2,8 +2,25 @@
   <library name="jsoup-1.11.3">
     <CLASSES>
       <root url="jar://$USER_HOME$/Downloads/jsoup-1.11.3.jar!/" />
+      <root url="file://$PROJECT_DIR$/Library/jaf-1_1_1/jaf-1.1.1" />
+      <root url="file://$PROJECT_DIR$/Library/javamail1_4_5/javamail-1.4.5" />
+      <root url="jar://$PROJECT_DIR$/Library/jsoup-1.11.3.jar!/" />
     </CLASSES>
-    <JAVADOC />
-    <SOURCES />
+    <JAVADOC>
+      <root url="file://$PROJECT_DIR$/Library/jaf-1_1_1/jaf-1.1.1/docs/javadocs" />
+      <root url="file://$PROJECT_DIR$/Library/javamail1_4_5/javamail-1.4.5/docs/javadocs" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/Library/jaf-1_1_1/jaf-1.1.1/demo" />
+      <root url="file://$PROJECT_DIR$/Library/javamail1_4_5/javamail-1.4.5/demo" />
+      <root url="file://$PROJECT_DIR$/Library/javamail1_4_5/javamail-1.4.5/demo/client" />
+      <root url="file://$PROJECT_DIR$/Library/javamail1_4_5/javamail-1.4.5/demo/logging" />
+      <root url="file://$PROJECT_DIR$/Library/javamail1_4_5/javamail-1.4.5/demo/outlook" />
+      <root url="file://$PROJECT_DIR$/Library/javamail1_4_5/javamail-1.4.5/demo/servlet" />
+      <root url="file://$PROJECT_DIR$/Library/javamail1_4_5/javamail-1.4.5/demo/webapp/src/classes" />
+      <root url="file://$PROJECT_DIR$/Library/javamail1_4_5/javamail-1.4.5/demo/webapp/src/taglib" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/Library/jaf-1_1_1/jaf-1.1.1" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/Library/javamail1_4_5/javamail-1.4.5" recursive="false" />
   </library>
 </component>
