@@ -13,7 +13,7 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 
 public class MenuGetter {
-    private static Elements menuString;
+    private Elements menuString;
 
     public MenuGetter() throws IOException {
         String targetURL = "http://nutrition.sa.ucsc.edu/menuSamp.asp?locationNum=40&locationName=College+Nine+%26+Ten&sName=&naFlag=";
