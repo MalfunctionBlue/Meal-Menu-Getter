@@ -18,7 +18,7 @@ public class MenuGetter {
         Document doc = Jsoup.connect(targetURL).get();
         //System.out.println(doc.toString());
         //"[class=menusamprecipes]" is the tag for food
-        Elements foods = doc.select("[class=menusamprecipes]");
+        Elements foods = doc.select("[class=menusamprecipes],[class=menusampmeals]");
         //System.out.println(foods);
 
         for (Element food : foods) {
