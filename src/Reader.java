@@ -11,7 +11,7 @@ public class Reader {
     }
 
     public static void main(String[] args) throws Exception {
-        String url2 = "http://nutrition.sa.ucsc.edu/menuSamp.asp?locationNum=40&locationName=College+Nine+%26+Ten&sName=&naFlag=";
+        String fullurl = "http://nutrition.sa.ucsc.edu/menuSamp.asp?locationNum=40&locationName=College+Nine+%26+Ten&sName=&naFlag=";
         String url="http://nutrition.sa.ucsc.edu/nutframe.asp?sName=UC+Santa+Cruz+Dining&locationNum=40&locationName=Colleges+Nine+%26+Ten+Dining+Hall&naFlag=1";
         Document doc = Jsoup.connect(url).get();
         Elements mainFrame=doc.select("Frame[name=AuroraMain]");
@@ -19,5 +19,6 @@ public class Reader {
         System.out.println(doc.text());
         pl(mainFrame.toString());
         pl(mainFrameSrc);
+        pl(fullurl);
     }
 }
