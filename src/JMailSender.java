@@ -6,7 +6,7 @@ import javax.mail.internet.MimeMessage;
 import javax.activation.*;
 
 public class JMailSender {
-    public static void sent(String account,String pw,String[] addressList) throws IOException {
+    public static void sent(String account, String pw, String[] addressList) throws IOException {
 
         final String username = account;
         final String password = pw;
@@ -31,7 +31,7 @@ public class JMailSender {
             message.setSubject("Today's Dining Hall is Serving...");
             message.setContent(new MenuGetter().toString(),"text/html");
 
-            for(String s:addressList) {
+            for (String s : addressList) {
                 message.setRecipients(Message.RecipientType.TO,
                         InternetAddress.parse(s));
                 Transport.send(message);
