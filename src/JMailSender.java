@@ -29,7 +29,7 @@ public class JMailSender {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(account));
             message.setSubject("Today's Dining Hall is Serving...");
-            message.setText(new MenuGetter().toString());
+            message.setContent(new MenuGetter().toString(),"text/html");
 
             for(String s:addressList) {
                 message.setRecipients(Message.RecipientType.TO,

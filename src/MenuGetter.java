@@ -15,6 +15,11 @@ import java.io.IOException;
 public class MenuGetter {
     private Elements menuString;
 
+    public static void main(String[] args) throws IOException {
+       MenuGetter test= new MenuGetter();
+       System.out.print(test.toString());
+    }
+
     public MenuGetter() throws IOException {
         String targetURL = "http://nutrition.sa.ucsc.edu/menuSamp.asp?locationNum=40&locationName=College+Nine+%26+Ten&sName=&naFlag=";
         Document doc = Jsoup.connect(targetURL).get();
@@ -24,7 +29,12 @@ public class MenuGetter {
     public String toString() {
         String s = "";
         for (Element e : menuString)
-            s += e.text() + "\n";
+            if (e.is("[class=menusampmeals]")) {
+                s += "<b>" + e.text() + "</b><br>";
+            } else {
+                s += "<br>"+e.text() + "<br>";
+            }
+            s="<html><body>"+s+"</body></html>";
         return s;
     }
 
