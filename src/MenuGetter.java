@@ -16,8 +16,8 @@ public class MenuGetter {
     private Elements menuString;
 
     public static void main(String[] args) throws IOException {
-       MenuGetter test= new MenuGetter();
-       System.out.print(test.toString());
+        MenuGetter test = new MenuGetter();
+        System.out.print(test.toString());
     }
 
     public MenuGetter() throws IOException {
@@ -28,13 +28,14 @@ public class MenuGetter {
 
     public String toString() {
         String s = "";
-        for (Element e : menuString)
+        for (Element e : menuString) {
             if (e.is("[class=menusampmeals]")) {
-                s += "<b>" + e.text() + "</b><br>";
+                s += "<br><b>" + e.text() + "</b><hr>";
             } else {
-                s += "<br>"+e.text() + "<br>";
+                s += e.text() + "<br>";
             }
-            s="<html><body>"+s+"</body></html>";
+        }
+        s = "<html><body>" + s + "</body></html>";
         return s;
     }
 
