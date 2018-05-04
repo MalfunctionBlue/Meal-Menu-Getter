@@ -1,3 +1,8 @@
+/*
+Author: David Yu and Michael Zhang
+Date: 05/01/2018
+Description: this java file handles the email components of our program.
+ */
 import java.io.IOException;
 import java.util.Properties;
 import javax.mail.*;

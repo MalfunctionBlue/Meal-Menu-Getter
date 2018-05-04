@@ -1,7 +1,7 @@
 /*
 Author: David Yu and Michael Zhang
 Date: 05/01/2018
-Description: a java program which grab online information of UCSC dining halls, and push it into our personal emails
+Description: this part parse the target url into our desire output.
  */
 
 
